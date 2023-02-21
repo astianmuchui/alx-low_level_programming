@@ -7,7 +7,7 @@
 
 int _islower(int c)
 {
-	/* Check for the range of ascii values.
+	/** Check for the range of ascii values.
 	*  Ranges from 97-122 for lowercase characters
 	*/
 
