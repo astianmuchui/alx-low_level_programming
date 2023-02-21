@@ -1,21 +1,13 @@
 #include "main.h"
 
 /**
-* _islower - check for the ascii value of a character
-* @c : character to be tested
-* Return: 1 if true and 0 if false
+ * _islower - checks for lowercase character.
+ * @c: integer parameter to check
+ * Return: 1 if c is lowercase 0 otherwise
 */
-
 int _islower(int c)
 {
-	/**
-	* Check for the range of ascii values.
-	* Ranges from 97-122 for lowercase characters
-	*/
-
-	int ascii = (int) c;
-
-	if (ascii >= 97 && ascii <= 122)
+	if (c >= 'a' && c <= 'z')
 	{
 		return (1);
 	}
@@ -23,4 +15,5 @@ int _islower(int c)
 	{
 		return (0);
 	}
+	_putchar('\n');
 }
