@@ -1,5 +1,0 @@
-#!/bin/bash
-git status &&
-git add . && 
-git commit -m "Working on it" &&
-git push
