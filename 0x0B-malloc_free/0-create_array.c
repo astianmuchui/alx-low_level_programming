@@ -3,32 +3,29 @@
 #include <stddef.h>
 
 /**
-* create_array - create array of size n and initiate it with character c
-* @size: the size of the desired array
-* @c: the character to initialize with
-* Return: NULL if size=0 ,  NULL if it fails ,
-* pointer to the array if there is sucess
-*/
+ * create_array - creates an array of chars
+ * @size: size of the array
+ * @c: initaialize the array
+ * Return: pointer to the array
+ */
 
-void *create_array(unsigned int size, char c)
+char *create_array(unsigned int size, char c)
 {
+	char *arr;
+	unsigned int i;
+
 	if (size == 0)
-	{
 		return (NULL);
-	}
-	else if (size  !=  0)
-	{
-		char *arr  =  malloc((sizeof(char) * size));
 
-		if (arr  ==  NULL)
-		{
-			return (NULL);
-		}
-		else
-		{
-			arr[0]  =  c;
+	arr = malloc(size * sizeof(char));
 
-			return (arr);
-		}
-	}
-};
+	if (arr == NULL)
+		return (NULL);
+
+	for (i = 0; i < size; i++)
+		arr[i] = c;
+
+	arr[i + 1] = '\0';
+
+	return (arr);
+}
