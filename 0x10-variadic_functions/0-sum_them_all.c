@@ -3,7 +3,6 @@
 /**
 * sum_them_all - Get the sum
 * @n: number of arguments
-* @...: integers to add
 * Return: Sum or 0
 */
 
