@@ -1,10 +1,10 @@
 #include "main.h"
 
 /**
- * append_text_to_file - appends text to file
- * @filename: filename
- * @text_content: content to append
- * Return: 1 on success, -1 on failure
+ * append_text_to_file - appends text to existing file
+ * @filename: file to append to
+ * @text_content: content to append to the file
+ * Return: 1 on success, -1 on fail
  */
 
 int append_text_to_file(const char *filename, char *text_content)
