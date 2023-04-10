@@ -1,45 +1,46 @@
 #include "main.h"
+#include <fcntl.h>
 
 /**
-* read_textfile - reads a text file and outputs it
-* @filename: name of the file
-* @letters: number of letters to print/read
-* Return: number of letters it was able to print sucessfully
-*/
+ * read_textfile - reads a text file and prints it to the
+ * POSIX standard output
+ * @filename: filename
+ * @letters: number of letters in the file
+ * Return: letters it could read and print
+ */
 
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	if (!filename)
+	ssize_t letters_read, letters_wrote;
+	int fd, buff_size = letters;
+	char *buff;
+
+	if (filename == NULL)
 		return (0);
 
-	int file_descriptor = open(filename, O_RDONLY);
-
-	if (file_descriptor < 0)
+	fd = open(filename, O_RDONLY);
+	if (fd == -1) /* file could not be opened */
 		return (0);
 
-	char *buffer = malloc(sizeof(char) * letters);
+	buff = malloc(sizeof(char) * buff_size);
+	if (buff == NULL)
+		return (0);
 
-	int content = read(file_descriptor, buffer, letters);
-
-	if (content < 0)
+	letters_read = read(fd, buff, buff_size);
+	if (letters_read == -1)
 	{
-		free(buffer);
+		free(buff);
 		return (0);
 	}
 
-	/* Set null termination character */
-
-	buffer[content] = "\0";
-
-	close(file_descriptor);
-
-	int write_out = write(STDOUT_FILENO, buffer, content);
-
-	if (write_out < 0)
-		free(buffer);
+	letters_wrote = write(STDOUT_FILENO, buff, letters_read);
+	if (letters_wrote == -1 || letters_wrote != buff_size)
+	{
+		free(buff);
 		return (0);
+	}
 
-	free(buffer);
-	return (write_out);
-
+	close(fd); /* close the file upon completion */
+	free(buff);
+	return (letters_read);
 }
