@@ -7,8 +7,7 @@
 
 int get_endianess(void)
 {
-	unsigned int m = 1;
-
+	int num = 1;
 	char *ch = (char *) &num;
 
 	return (*ch == 1); /* one or zero */
