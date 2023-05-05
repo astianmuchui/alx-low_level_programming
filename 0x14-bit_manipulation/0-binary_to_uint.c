@@ -35,18 +35,18 @@ unsigned int binary_to_uint(const char *b)
 	if (b == NULL)
 		return (0);
 
-	int strlen;
+	int str_len;
 
 	unsigned int u_int = 0;
 
-	strlen = strlen(b);
+	str_len = strlen(b);
 
-	for (int i = 0; i < strlen; i++)
+	for (int i = 0; i < str_len; i++)
 	{
 		if (b[i] != '0' && b[i] != '1')
 			return (0);
 
-		u_int += (b[i] - '0') * _exponent(2, (strlen - (i + 1)));
+		u_int += (b[i] - '0') * _exponent(2, (str_len - (i + 1)));
 	}
 
 	return (u_int);
