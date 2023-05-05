@@ -10,7 +10,7 @@ void print_binary(unsigned long int n)
 {
 	int b;
 
-	for (b = 31, b >= 0, b--)
+	for (b = 31; b >= 0; b--)
 	{
 		if ((n & (1 << b)) != 0)
 		{
@@ -20,6 +20,8 @@ void print_binary(unsigned long int n)
 		{
 			_putchar('0');
 		}
-	_putchar('\n');
+
 	}
+	_putchar('\n');
 }
+
