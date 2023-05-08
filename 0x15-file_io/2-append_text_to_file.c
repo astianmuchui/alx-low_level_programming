@@ -9,7 +9,7 @@
 
 int append_text_to_file(const char *filename, char *text_content)
 {
-	ssize_t write;
+	ssize_t wr_ite;
 	int fdesc;
 
 	fdesc = open(filename, O_RDWR | O_APPEND);
@@ -22,8 +22,8 @@ int append_text_to_file(const char *filename, char *text_content)
 
 	if (text_content != NULL)
 	{
-		write = write(fdesc, text_content, strlen(text_content));
-		if (write == -1)
+		wr_ite = write(fdesc, text_content, strlen(text_content));
+		if (wr_ite == -1)
 			return (-1);
 	}
 
