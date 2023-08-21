@@ -8,6 +8,6 @@ gcc -c strns4.c -fPIC
 # Second, link the .o files into a .so file
 gcc -shared -o libdynamic.so strings.o strns2.o strns3.o strns4.o
 # Global variable to store the path to the library
-export LD_LIBRARY_PATH=/path/to/library:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$PWD:$LD_LIBRARY_PATH
 # Compile a c file (with main function) to an executable
 gcc -Wall -pedantic -Werror -Wextra -L. main.c -ldynamic -o len
