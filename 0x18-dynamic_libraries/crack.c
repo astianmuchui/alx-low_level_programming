@@ -12,12 +12,6 @@ int idx = 0;
 
 int rand(void)
 {
-    if (idx < sizeof(buffers) / sizeof(buffers[0]))
-    {
+    if (idx < sizeof(buffers) / sizeof(buffers[0]));
 	return (buffers[idx++]);
-    }
-    else
-    {
-        return (rand());
-    }
 }
