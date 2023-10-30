@@ -1,0 +1,41 @@
+CC = gcc
+
+SRC = main.c file1.c file2.c
+
+# Object files
+OBJ = $(SRC:.c=.o)
+
+# Executable name
+NAME = school
+
+# Program to delete files
+RM = rm -f
+
+# Compiler flags
+CFLAGS = -Wall -Werror -Wextra -pedantic
+
+# Default target
+all: $(NAME)
+
+# build the executable
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
+
+# compile source files to object files
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+#  clean Emacs and Vim temporary files, executable, and object files
+clean:
+	$(RM) *~ $(OBJ) $(NAME)
+
+#  clean object files
+oclean:
+	$(RM) $(OBJ)
+
+#  clean Emacs and Vim temporary files, executable, and object files
+fclean: clean oclean
+
+re: fclean all
+
+.PHONY: all clean oclean fclean re
